@@ -1,0 +1,50 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
+import { PropertiesService } from './properties.service';
+import { CreatePropertyDto } from './dto/create-property.dto';
+import { group } from 'console';
+import { UpdatePropertyDto } from './dto/update-property.dto';
+// import { UpdatePropertyDto } from './dto/update-property.dto';
+
+@Controller('properties')
+export class PropertiesController {
+  constructor(private readonly propertiesService: PropertiesService) {}
+
+  @Post()
+  create(@Body() createPropertyDto: CreatePropertyDto) {
+    return this.propertiesService.create(createPropertyDto);
+  }
+
+  @Get()
+  findAll(@Query('group') group: string) {
+    return this.propertiesService.findAll(group);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.propertiesService.findOne(id);
+  }
+
+  @Patch(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updatePropertyDto: UpdatePropertyDto,
+  ) {
+    return this.propertiesService.update(id, updatePropertyDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.propertiesService.remove(id);
+  }
+}
