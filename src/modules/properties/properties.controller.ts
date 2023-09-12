@@ -4,7 +4,6 @@ import {
   Get,
   Post,
   Body,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   Patch,
   Param,
   Delete,
@@ -12,9 +11,7 @@ import {
 } from '@nestjs/common';
 import { PropertiesService } from './properties.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
-import { group } from 'console';
 import { UpdatePropertyDto } from './dto/update-property.dto';
-// import { UpdatePropertyDto } from './dto/update-property.dto';
 
 @Controller('properties')
 export class PropertiesController {

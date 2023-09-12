@@ -20,8 +20,8 @@ export class PropertiesService {
         'o tipo espero deve ser casa ou apartamento',
       );
     }
-    const propertie = await this.propertyRepository.create(createPropertyDto);
-    return propertie;
+    const property = await this.propertyRepository.create(createPropertyDto);
+    return property;
   }
 
   async findAll(group: string | undefined) {
@@ -30,21 +30,24 @@ export class PropertiesService {
 
   async findOne(id: string) {
     const findProperty = await this.propertyRepository.findOne(id);
+    if (!findProperty) {
+      throw new NotFoundException('Imovél não encontrado');
+    }
     return findProperty;
   }
 
   async update(id: string, updatePropertyDto: UpdatePropertyDto) {
-    const foudPropertie = await this.propertyRepository.findOne(id);
-    if (!foudPropertie) {
-      throw new NotFoundException('imovel não encontrado');
+    const findProperty = await this.propertyRepository.findOne(id);
+    if (!findProperty) {
+      throw new NotFoundException('imovél não encontrado');
     }
     return this.propertyRepository.update(id, updatePropertyDto);
   }
 
   async remove(id: string) {
-    const foudPropertie = await this.propertyRepository.findOne(id);
-    if (!foudPropertie) {
-      throw new NotFoundException('imovel não encontrado');
+    const findProperty = await this.propertyRepository.findOne(id);
+    if (!findProperty) {
+      throw new NotFoundException('imovél não encontrado');
     }
     return this.propertyRepository.delete(id);
   }
