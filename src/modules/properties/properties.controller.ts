@@ -8,18 +8,22 @@ import {
   Param,
   Delete,
   Query,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { PropertiesService } from './properties.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('properties')
 export class PropertiesController {
   constructor(private readonly propertiesService: PropertiesService) {}
 
   @Post()
-  create(@Body() createPropertyDto: CreatePropertyDto) {
-    return this.propertiesService.create(createPropertyDto);
+  @UseGuards(JwtAuthGuard)
+  create(@Body() createPropertyDto: CreatePropertyDto, @Request() req) {
+    return this.propertiesService.create(createPropertyDto, req.user.id);
   }
 
   @Get()
@@ -33,6 +37,7 @@ export class PropertiesController {
   }
 
   @Patch(':id')
+  @UseGuards(JwtAuthGuard)
   update(
     @Param('id') id: string,
     @Body() updatePropertyDto: UpdatePropertyDto,
@@ -41,6 +46,7 @@ export class PropertiesController {
   }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string) {
     return this.propertiesService.remove(id);
   }

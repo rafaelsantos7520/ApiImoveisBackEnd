@@ -27,8 +27,4 @@ export class CreatePropertyDto {
   @IsString()
   @IsNotEmpty()
   tipo: 'casa' | 'apartamento';
-
-  @IsString()
-  @IsNotEmpty()
-  userId: string;
 }
