@@ -8,7 +8,7 @@ import { PrismaService } from 'src/database/prisma.service';
 @Injectable()
 export class PropertiePrismaRepository implements PropertiesRepository {
   constructor(private prisma: PrismaService) {}
-  async create(data: CreatePropertyDto): Promise<Property> {
+  async create(data: CreatePropertyDto, userId): Promise<Property> {
     const propertie = new Property();
     Object.assign(propertie, {
       ...data,
@@ -22,7 +22,7 @@ export class PropertiePrismaRepository implements PropertiesRepository {
         cidade: propertie.cidade,
         fotos: propertie.fotos,
         tipo: propertie.tipo,
-        userId: propertie.userId,
+        userId: userId,
       },
     });
 

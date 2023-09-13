@@ -6,9 +6,12 @@ import { Property } from '../../entities/property.entity';
 @Injectable()
 export class PropertieInMemoryRepository implements PropertiesRepository {
   private database: Property[] = [];
-  async create(data: CreatePropertyDto): Promise<Property> {
+  async create(data: CreatePropertyDto, userId: string): Promise<Property> {
     const newPropertie = new Property();
-    Object.assign(newPropertie, data);
+    Object.assign(newPropertie, {
+      ...data,
+      userId: userId,
+    });
     this.database.push(newPropertie);
     return newPropertie;
   }

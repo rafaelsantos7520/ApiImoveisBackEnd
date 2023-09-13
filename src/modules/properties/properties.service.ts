@@ -11,7 +11,7 @@ import { UpdatePropertyDto } from './dto/update-property.dto';
 export class PropertiesService {
   constructor(private propertyRepository: PropertiesRepository) {}
 
-  async create(createPropertyDto: CreatePropertyDto) {
+  async create(createPropertyDto: CreatePropertyDto, userId: string) {
     if (
       createPropertyDto.tipo !== 'casa' &&
       createPropertyDto.tipo !== 'apartamento'
@@ -20,7 +20,10 @@ export class PropertiesService {
         'o tipo espero deve ser casa ou apartamento',
       );
     }
-    const property = await this.propertyRepository.create(createPropertyDto);
+    const property = await this.propertyRepository.create(
+      createPropertyDto,
+      userId,
+    );
     return property;
   }
 
