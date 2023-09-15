@@ -11,7 +11,7 @@ export class PropertieInMemoryRepository implements PropertiesRepository {
     const newPropertie = new Property();
     Object.assign(newPropertie, {
       ...data,
-      userId: userId,
+      userId,
     });
     this.database.push(newPropertie);
     return newPropertie;

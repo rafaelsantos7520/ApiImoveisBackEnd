@@ -19,12 +19,13 @@ export class PropertiePrismaRepository implements PropertiesRepository {
         quartos: propertie.quartos,
         id: propertie.id,
         titulo: propertie.titulo,
-        tipo: propertie.titulo,
+        tipo: propertie.tipo,
         valor: propertie.valor,
         cidade: propertie.cidade,
         created_at: propertie.created_at,
         tamanho: propertie.tamanho,
-        userId: userId,
+        userId,
+        fotos: propertie.fotos,
       },
     });
 
@@ -62,7 +63,7 @@ export class PropertiePrismaRepository implements PropertiesRepository {
   }
 
   async delete(id: string): Promise<void> {
-    await this.prisma.user.delete({
+    await this.prisma.property.delete({
       where: { id },
     });
   }
