@@ -2,7 +2,9 @@ import { randomUUID } from 'node:crypto';
 
 export class Property {
   readonly id: string;
-  quantidadeQuartos: number;
+  titulo: string;
+  tamanho: number;
+  quartos: number;
   valor: number;
   cidade: string;
   fotos?: string[] | null;

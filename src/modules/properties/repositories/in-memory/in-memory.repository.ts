@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PropertiesRepository } from '../properties.repositories';
 import { CreatePropertyDto } from '../../dto/create-property.dto';
 import { Property } from '../../entities/property.entity';
+import { UpdatePropertyDto } from '../../dto/update-property.dto';
 
 @Injectable()
 export class PropertieInMemoryRepository implements PropertiesRepository {
@@ -10,7 +11,7 @@ export class PropertieInMemoryRepository implements PropertiesRepository {
     const newPropertie = new Property();
     Object.assign(newPropertie, {
       ...data,
-      userId: userId,
+      userId,
     });
     this.database.push(newPropertie);
     return newPropertie;
@@ -32,7 +33,7 @@ export class PropertieInMemoryRepository implements PropertiesRepository {
     const property = this.database.find((property) => property.id === id);
     return property;
   }
-  update(id: string, data: CreatePropertyDto): Promise<Property> | Property {
+  update(id: string, data: UpdatePropertyDto): Promise<Property> | Property {
     const property = this.database.find((property) => property.id === id);
     Object.assign(property, data);
     return property;

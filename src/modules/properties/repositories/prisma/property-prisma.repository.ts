@@ -8,7 +8,7 @@ import { PrismaService } from 'src/database/prisma.service';
 @Injectable()
 export class PropertiePrismaRepository implements PropertiesRepository {
   constructor(private prisma: PrismaService) {}
-  async create(data: CreatePropertyDto, userId): Promise<Property> {
+  async create(data: CreatePropertyDto, userId: string): Promise<Property> {
     const propertie = new Property();
     Object.assign(propertie, {
       ...data,
@@ -16,13 +16,16 @@ export class PropertiePrismaRepository implements PropertiesRepository {
 
     const newProperty = await this.prisma.property.create({
       data: {
+        quartos: propertie.quartos,
         id: propertie.id,
-        quantidadeQuartos: propertie.quantidadeQuartos,
+        titulo: propertie.titulo,
+        tipo: propertie.tipo,
         valor: propertie.valor,
         cidade: propertie.cidade,
+        created_at: propertie.created_at,
+        tamanho: propertie.tamanho,
+        userId,
         fotos: propertie.fotos,
-        tipo: propertie.tipo,
-        userId: userId,
       },
     });
 
@@ -60,7 +63,7 @@ export class PropertiePrismaRepository implements PropertiesRepository {
   }
 
   async delete(id: string): Promise<void> {
-    await this.prisma.user.delete({
+    await this.prisma.property.delete({
       where: { id },
     });
   }

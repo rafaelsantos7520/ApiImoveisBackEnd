@@ -19,13 +19,15 @@ model User {
 }
 
 model Property {
-  id                String    @id // Se você deseja gerar automaticamente IDs
-  quantidadeQuartos Int
-  valor             Int
-  cidade            String
-  fotos             String[] // Um array de strings para URLs de fotos, opcional
-  user              User      @relation(fields: [userId], references: [id])
-  userId            String
-  created_at        DateTime? @default(now()) // Data de criação, opcional
-  tipo              String // Tipo de imóvel: 'casa' ou 'apartamento'
+  id         String    @id // Se você deseja gerar automaticamente IDs
+  quartos    Int
+  titulo     String
+  tamanho    Int
+  valor      Int
+  cidade     String
+  fotos      String[] // Um array de strings para URLs de fotos, opcional
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  created_at DateTime? @default(now()) // Data de criação, opcional
+  tipo       String // Tipo de imóvel: 'casa' ou 'apartamento'
 }
