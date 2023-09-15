@@ -7,9 +7,17 @@ import {
 } from 'class-validator';
 
 export class CreatePropertyDto {
+  @IsString()
+  @IsNotEmpty()
+  titulo: string;
+
   @IsNumber()
   @IsNotEmpty()
-  quantidadeQuartos: number;
+  tamanho: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  quartos: number;
 
   @IsNumber()
   @IsNotEmpty()
