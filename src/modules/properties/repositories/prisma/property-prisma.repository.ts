@@ -26,6 +26,9 @@ export class PropertiePrismaRepository implements PropertiesRepository {
         tamanho: propertie.tamanho,
         userId,
         fotos: propertie.fotos,
+        bairro: propertie.bairro,
+        banheiros: propertie.banheiros,
+        descricao: propertie.descricao,
       },
     });
 

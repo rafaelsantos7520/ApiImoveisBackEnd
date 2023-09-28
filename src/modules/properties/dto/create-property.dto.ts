@@ -18,6 +18,15 @@ export class CreatePropertyDto {
   titulo: string;
 
   @ApiProperty({
+    description: 'descriçâo da propriedade',
+    type: String,
+    example: 'Casa aconchegante na praia com varios quartos e piscina',
+  })
+  @IsString()
+  @IsNotEmpty()
+  descricao: string;
+
+  @ApiProperty({
     description: 'Tamanho da propriedade em metros quadrados',
     type: Number,
     example: 150,
@@ -36,6 +45,15 @@ export class CreatePropertyDto {
   quartos: number;
 
   @ApiProperty({
+    description: 'Número de banheiros na propriedade',
+    type: Number,
+    example: 3,
+  })
+  @IsNumber()
+  @IsNotEmpty()
+  banheiros: number;
+
+  @ApiProperty({
     description: 'Valor da propriedade',
     type: Number,
     example: 250000,
@@ -52,6 +70,15 @@ export class CreatePropertyDto {
   @IsString()
   @IsNotEmpty()
   cidade: string;
+
+  @ApiProperty({
+    description: 'bairro da propriedade',
+    type: String,
+    example: 'Leblom',
+  })
+  @IsString()
+  @IsNotEmpty()
+  bairro: string;
 
   @ApiProperty({
     description: 'Fotos da propriedade',
