@@ -12,6 +12,8 @@ CREATE TABLE "User" (
 CREATE TABLE "Property" (
     "id" TEXT NOT NULL,
     "quartos" INTEGER NOT NULL,
+    "banheiros" INTEGER NOT NULL,
+    "bairro" TEXT NOT NULL,
     "titulo" TEXT NOT NULL,
     "tamanho" INTEGER NOT NULL,
     "valor" INTEGER NOT NULL,

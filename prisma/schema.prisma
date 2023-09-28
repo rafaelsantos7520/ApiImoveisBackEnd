@@ -21,6 +21,9 @@ model User {
 model Property {
   id         String    @id // Se você deseja gerar automaticamente IDs
   quartos    Int
+  banheiros  Int
+  descricao  String
+  bairro     String
   titulo     String
   tamanho    Int
   valor      Int
