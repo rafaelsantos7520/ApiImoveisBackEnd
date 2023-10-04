@@ -81,6 +81,15 @@ export class CreatePropertyDto {
   bairro: string;
 
   @ApiProperty({
+    description: 'quantidade de vagas de garagem',
+    type: Number,
+    example: 2,
+  })
+  @IsNumber()
+  @IsNotEmpty()
+  vagas_garagem: number;
+
+  @ApiProperty({
     description: 'Fotos da propriedade',
     type: [String],
     isArray: true,

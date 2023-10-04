@@ -26,6 +26,7 @@ model Property {
   bairro     String
   titulo     String
   tamanho    Int
+  vagas_garagem Int
   valor      Int
   cidade     String
   fotos      String[] // Um array de strings para URLs de fotos, opcional

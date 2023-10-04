@@ -29,6 +29,7 @@ export class PropertiePrismaRepository implements PropertiesRepository {
         bairro: propertie.bairro,
         banheiros: propertie.banheiros,
         descricao: propertie.descricao,
+        vagas_garagem: propertie.vagas_garagem,
       },
     });
 
