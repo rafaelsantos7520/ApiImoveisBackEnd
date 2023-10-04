@@ -10,6 +10,7 @@ export class Property {
   bairro: string;
   valor: number;
   cidade: string;
+  vagas_garagem: number;
   fotos?: string[] | null;
   userId: string;
   created_at?: Date;
