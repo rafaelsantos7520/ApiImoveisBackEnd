@@ -5,11 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors({
-    origin: '*', // Substitua pela origem do seu frontend
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Se você estiver usando cookies ou autenticação
-  });
+  app.enableCors();
 
   const config = new DocumentBuilder()
     .setTitle('Api Imoveis')
