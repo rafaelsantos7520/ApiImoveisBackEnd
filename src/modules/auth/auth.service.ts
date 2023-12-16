@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { compare } from 'bcrypt';
@@ -20,10 +21,18 @@ export class AuthService {
     }
     return null;
   }
+
   async login(email: string) {
     const user = await this.userServices.findByEmail(email);
-    return {
-      token: this.jwtService.sign({ email }, { subject: user.id }),
-    };
+    if (user) {
+      // Retorne os detalhes do usuário (exceto a senha) junto com o token
+      const { password, ...userDetails } = user; // Desestruturação para remover a senha
+
+      return {
+        token: this.jwtService.sign({ email }, { subject: user.id }),
+        user: userDetails, // Retorna os detalhes do usuário (exceto a senha)
+      };
+    }
+    return null;
   }
 }
