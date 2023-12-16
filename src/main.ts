@@ -10,7 +10,8 @@ async function bootstrap() {
   app.enableCors({
     origin: 'http://localhost:3000', // Substitua com o domínio do seu frontend em produção
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+    allowedHeaders:
+      'Origin, X-Requested-With, Content-Type, Accept   Authorization',
     credentials: true, // Permite enviar cookies
   });
 
